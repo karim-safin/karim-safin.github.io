@@ -1,4 +1,9 @@
 /**
+ * Canvas will shrink when the screen is too small to fit, but it won't grow
+ * larger than this size (below)
+ */
+var maxCanvasSize = 500;
+/**
  * The current game state
  */
 var game;
@@ -339,4 +344,24 @@ function onMouseClick(event) {
             gameEndMessage();
         }
     }
+}
+
+function setCanvasSize(width, height) {
+    var canvas = document.getElementById("mainCanvas");
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+}
+
+/**
+ * Makes sure that the canvas will fit into body but won't be larget than
+ * maxCanvasSize declared at the beginning of the file
+ */
+function onResize() {
+    var bodyWidth = window.innerWidth;
+    if (bodyWidth * 0.9 < maxCanvasSize) {
+        setCanvasSize(bodyWidth * 0.9, bodyWidth * 0.9);
+    } else {
+        setCanvasSize(maxCanvasSize, maxCanvasSize);
+    }
+
 }
