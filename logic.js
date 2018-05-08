@@ -1,9 +1,4 @@
 /**
- * Canvas will shrink when the screen is too small to fit, but it won't grow
- * larger than this size (below)
- */
-var maxCanvasSize = 500;
-/**
  * The current game state
  */
 var game;
@@ -295,7 +290,7 @@ class Game {
 function drawCell(context, row, column, size) {
     var currentCellColor = game.getColor(game.width - 1 - row, column);
     context.fillStyle = colors[currentCellColor];
-    context.fillRect(column * size, row * size, size, size);
+    context.fillRect(column * size, row * size, size + 0.5, size + 0.5);
 }
 
 function drawGame() {
@@ -315,7 +310,6 @@ function drawGame() {
  * Creates a new game field and sets the score counter to 0
  */
 function setupGame() {
-    onResize();
     game = new Game(gameSize);
     drawGame();
 }
@@ -334,7 +328,7 @@ function onMouseClick(event) {
     var rect = c.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    var cellSize = c.width / gameSize;
+    var cellSize = parseInt(c.style.width.slice(0, -2)) / gameSize;
     x = Math.floor(x / cellSize);
     y = Math.floor(y / cellSize);
     y = game.width - 1 - y;
@@ -359,10 +353,16 @@ function setCanvasSize(width, height) {
  */
 function onResize() {
     var bodyWidth = window.innerWidth;
-    if (bodyWidth * 0.9 < maxCanvasSize) {
+    // var bodyHeight = window.innerHeight;
+    var buttonRect = document.getElementById("newGameButton").getBoundingClientRect();
+    var buttonHeight = buttonRect.bottom - buttonRect.top;
+    var scoreRect = document.getElementById("scoreDiv").getBoundingClientRect();
+    var scoreHeight = scoreRect.bottom - scoreRect.top;
+    var bodyHeight = window.innerHeight - scoreHeight - buttonHeight;
+    if (bodyWidth < bodyHeight) {
         setCanvasSize(bodyWidth * 0.9, bodyWidth * 0.9);
     } else {
-        setCanvasSize(maxCanvasSize, maxCanvasSize);
+        setCanvasSize(bodyHeight * 0.9, bodyHeight * 0.9);
     }
 
 }
