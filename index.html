@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Sometime there will be a game<title>
+  <meta http-equiv = "Content-Type" content = "text/html" charset = "UTF-8">
+  <title>Tile breaker</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type = "text/javascript" src = "logic.js"></script>
 </head>
 <body>
-  <h1>Hola amiguitos!</h1>
-  <footer>gpuma 2017</footer>
+    <div id="scoreDiv" class = "score">Score: 0</div>
+    <canvas id="mainCanvas"
+            width="500"
+            height="500"
+            onclick="onMouseClick(event)"
+            class = "canvas"></canvas>
+    </br>
+    <button onclick="setupGame()" class = "newGameButton">New game</button> 
+    <script type="text/javascript">
+        setupGame();
+    </script>
 </body>
 </html>
