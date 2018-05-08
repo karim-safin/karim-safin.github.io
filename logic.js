@@ -299,6 +299,7 @@ function drawGame() {
     var cellSize = c.width / gameSize;
     for (var i = 0; i < game.width; ++i) {
         for (var j = 0; j < game.width; ++j) {
+
             drawCell(ctx, i, j, cellSize);
         }
     }
@@ -328,7 +329,7 @@ function onMouseClick(event) {
     var rect = c.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    var cellSize = parseInt(c.style.width.slice(0, -2)) / gameSize;
+    var cellSize = c.width / gameSize;
     x = Math.floor(x / cellSize);
     y = Math.floor(y / cellSize);
     y = game.width - 1 - y;
@@ -343,8 +344,10 @@ function onMouseClick(event) {
 
 function setCanvasSize(width, height) {
     var canvas = document.getElementById("mainCanvas");
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
+    width = Math.floor(width);
+    height = Math.floor(height);
+    canvas.width = width;
+    canvas.height = height;
 }
 
 /**
@@ -353,7 +356,6 @@ function setCanvasSize(width, height) {
  */
 function onResize() {
     var bodyWidth = window.innerWidth;
-    // var bodyHeight = window.innerHeight;
     var buttonRect = document.getElementById("newGameButton").getBoundingClientRect();
     var buttonHeight = buttonRect.bottom - buttonRect.top;
     var scoreRect = document.getElementById("scoreDiv").getBoundingClientRect();
@@ -364,5 +366,7 @@ function onResize() {
     } else {
         setCanvasSize(bodyHeight * 0.9, bodyHeight * 0.9);
     }
-
+    if (game != undefined) {
+        drawGame();
+    }
 }
