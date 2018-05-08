@@ -315,6 +315,7 @@ function drawGame() {
  * Creates a new game field and sets the score counter to 0
  */
 function setupGame() {
+    onResize();
     game = new Game(gameSize);
     drawGame();
 }
