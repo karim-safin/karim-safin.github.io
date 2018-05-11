@@ -1,8 +1,8 @@
 .score {
-    font-size: calc(40px - 2vw);
+    font-size: 30px;
     text-align: center;
     font-family: "-apple-system", ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-    padding-bottom: 10px;
+    padding-bottom: 5vh;
 }
 
 .canvas {
@@ -14,7 +14,7 @@
 }
 
 .newGameButton {
-    font-size: calc(40px - 2vw);
+    font-size: 30px;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;

@@ -290,7 +290,7 @@ class Game {
 function drawCell(context, row, column, size) {
     var currentCellColor = game.getColor(game.width - 1 - row, column);
     context.fillStyle = colors[currentCellColor];
-    context.fillRect(column * size, row * size, size + 0.5, size + 0.5);
+    context.fillRect(column * size, row * size, size, size);
 }
 
 function drawGame() {
