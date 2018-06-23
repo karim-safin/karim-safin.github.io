@@ -1,24 +1,12 @@
-.score {
-    font-size: 30px;
+p {
     text-align: center;
     font-family: "-apple-system", ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-    padding-bottom: 5vh;
 }
 
-.canvas {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+a {
+    color: #3465A4;
 }
 
-.newGameButton {
-    font-size: 30px;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    font-family: "-apple-system", ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+a.visited {
+    color: #729FCF;
 }
